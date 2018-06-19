@@ -6,7 +6,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { Contacts, Contact, ContactField, ContactName   } from '@ionic-native/contacts';
 
 
-
+import { EmailComposer } from '@ionic-native/email-composer';
 import { ModalController, Platform, ToastController } from "ionic-angular";
 import { MapaPage } from "../pages/mapa/mapa";
 
@@ -24,7 +24,8 @@ export class HistorialService {
                private modalCtrl: ModalController,
                private contacts: Contacts,
                private platform:Platform,
-               private toastCtrl:ToastController) { }
+               private toastCtrl:ToastController,
+               private emailComposer: EmailComposer) { }
 
 
   agregar_historial( texto:string ){
@@ -55,12 +56,31 @@ export class HistorialService {
 
       break;
 
-      /*case "mapa":
+      case "mapa":
 
         this.modalCtrl.create( MapaPage, { coords: scanData.info })
             .present();
-
-      break;*/
+          
+      break;
+      case "email":
+      
+        let correo = scanData.info.split(":");
+        let email = {
+          to: correo[1],
+          cc: correo[1],
+          bcc: ['john@doe.com', 'jane@doe.com'],
+         /* attachments: [
+            'file://img/logo.png',
+            'res://icon.png',
+            'base64:icon.png//iVBORw0KGgoAAAANSUhEUg...',
+            'file://README.pdf'
+          ],*/
+          subject: 'Tarea',
+          body: 'Tarea terminada',
+          isHtml: true
+        };
+        this.emailComposer.open(email);
+      break;
 
       /*case "contacto":
 
@@ -76,7 +96,7 @@ export class HistorialService {
 
   }
 
-  /*private crear_contacto( texto:string ){
+  private crear_contacto( texto:string ){
 
     let campos:any = this.parse_vcard( texto );
     console.log( campos );
@@ -101,19 +121,20 @@ export class HistorialService {
     );
 
 
-  }*/
+  }
 
-  /*private crear_toast( mensaje:string ){
+    private crear_toast( mensaje:string ){
 
-    this.toastCtrl.create({
-      message: mensaje,
-      duration: 2500
-    }).present();
+      this.toastCtrl.create({
+        message: mensaje,
+        duration: 2500
+      }).present();
+    
+    }
+  
 
-  }*/
 
-
-  /*private parse_vcard( input:string ) {
+  private parse_vcard( input:string ) {
 
     var Re1 = /^(version|fn|title|org):(.+)$/i;
     var Re2 = /^([^:;]+);([^:]+):(.+)$/;
@@ -155,7 +176,7 @@ export class HistorialService {
     });
 
     return fields;
-};*/
+};
 
 
 

@@ -20,6 +20,8 @@ import { Contacts } from '@ionic-native/contacts';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { EmailComposer } from '@ionic-native/email-composer';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +35,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     IonicModule.forRoot(MyApp),
     BrowserModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBEqKtJCsyLJBQibxDIdqqwd_KijpnchNc'
+      apiKey: 'AIzaSyD6y42WPKcE0im95z-K5tei894J-U3Asuk'
     })
   ],
   bootstrap: [IonicApp],
@@ -50,6 +52,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     BarcodeScanner,
     InAppBrowser,
     Contacts,
+    EmailComposer,
     HistorialService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

@@ -19,6 +19,9 @@ export class ScanData{
     }else if( texto.startsWith("MATMSG") ){
       this.tipo = "email";
     }
+    else if( texto.startsWith("email") ){
+      this.tipo = "email";
+    }
 
 
   }

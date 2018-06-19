@@ -28,9 +28,9 @@ export class HomePage {
 
     if( !this.platform.is('cordova')){
     
-     this._historialService.agregar_historial( "http://google.com");
-    // this._historialService.agregar_historial( "geo:9.976133040865312,-84.00677479055173" );
-      
+     //this._historialService.agregar_historial( "http://google.com");
+     //this._historialService.agregar_historial( "geo:9.976133040865312,-84.00677479055173" );
+     this._historialService.agregar_historial( "email:carlos_ivan_loera@hotmail.com" );
 //       this._historialService.agregar_historial( `BEGIN:VCARD
 // VERSION:2.1
 // N:Kent;Clark
